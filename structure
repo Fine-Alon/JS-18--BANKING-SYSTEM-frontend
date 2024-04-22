@@ -1,0 +1,19 @@
+JS-19/
+├── backend/
+│   ├── src/
+│   │   ├── index.js
+│   │   ├── cards.js
+│   │   └── utils.js
+│   ├── package.json       <-- Здесь настройки для бэкенда
+│   └── ...
+├── frontend/
+│   ├── src/
+│   │   ├── index.html
+│   │   ├── styles.css
+│   │   └── script.js
+│   ├── package.json       <-- Здесь настройки для фронтенда
+│   └── ...
+├── public/
+│   └── data.json
+├── package.json           <-- Общий package.json для управления всем проектом
+└── ...
