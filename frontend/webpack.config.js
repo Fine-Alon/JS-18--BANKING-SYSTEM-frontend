@@ -1,7 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// eslint-disable-next-line import/no-extraneous-dependencies
-const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
 
 module.exports = (env) => ({
   entry: './src/index.js',
@@ -13,23 +11,9 @@ module.exports = (env) => ({
     static: path.resolve(__dirname, 'dist'),
     hot: true,
   },
-  optimization: {
-    minimizer: [
-      '...',
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.sharpMinify,
-          options: {
-            png: {
-              quality: 10,
-            },
-          },
-        },
-      }),
-    ],
-  },
+  optimization: {},
   plugins: [
-    new HtmlWebpackPlugin({ template: './index.html' }),
+    new HtmlWebpackPlugin({template: './index.html'}),
   ],
   module: {
     rules: [
@@ -40,7 +24,7 @@ module.exports = (env) => ({
           loader: 'babel-loader',
           options: {
             presets: [
-              ['@babel/preset-env', { targets: 'defaults' }],
+              ['@babel/preset-env', {targets: 'defaults'}],
             ],
           },
         },
@@ -53,6 +37,21 @@ module.exports = (env) => ({
           },
           {
             loader: 'css-loader',
+          }, {
+            // Run postcss actions
+            loader: 'postcss-loader',
+            options: {
+              // `postcssOptions` is needed for postcss 8.x;
+              // if you use postcss 7.x skip the key
+              postcssOptions: {
+                // postcss plugins, can be exported to postcss.config.js
+                plugins: function () {
+                  return [
+                    require('autoprefixer')
+                  ];
+                }
+              }
+            }
           },
           {
             loader: 'sass-loader',

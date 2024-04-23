@@ -1,0 +1,13 @@
+@import "custom";
+// Import all of Bootstrap's CSS
+@import "bootstrap/scss/bootstrap";
+
+// Импорт переменной $blue-600 из библиотеки Bootstrap
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+
+// Определение пользовательского стиля для хидера
+.header {
+  background-color: $blue-600; // Применение синего цвета из переменной $blue-600
+  padding: 20px; // Добавление отступов для хорошего внешнего вида
+}
