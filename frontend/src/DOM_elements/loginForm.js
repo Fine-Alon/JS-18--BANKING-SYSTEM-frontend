@@ -5,7 +5,7 @@ const form = el('form.form-custom', [
   el('div.between', {class: 'row mb-3'}, [
     el('label.me-3', {for: 'inputEmail3', class: 'col-sm-2 col-form-label'}, 'Login'),
     el('div', {class: 'col-sm-9'}, [
-      el('input', {type: 'email', class: 'form-control', id: 'inputEmail3'})
+      el('input', {type: 'text', class: 'form-control', id: 'inputEmail3'})
     ])
     // el('div.form-text', { id: 'emailHelp' }, "We'll never share your email with anyone else.")
   ]),
