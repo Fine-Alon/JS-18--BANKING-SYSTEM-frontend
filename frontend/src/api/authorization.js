@@ -1,38 +1,50 @@
-async function authorize(username, password) {
-  try {
-    const response = await fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        login: username,
-        password: password
-      })
-    });
+import {setChildren} from "redom";
+import header from "../DOM_elements/header";
+import bankAccounts from "../DOM_elements/bankAccounts";
+import appContainer from "../DOM_elements/appContainer";
+import loginForm from "../DOM_elements/loginForm";
 
-    if (!response.ok) {
-      throw new Error('Failed to login');
+async function authorize() {
+  loginForm.addEventListener('submit', async function (event) {
+    event.preventDefault(); // Предотвращаем стандартное действие отправки формы
+    const inputsData = loginForm.querySelectorAll('input')
+    let username = inputsData[0].value
+    let password = inputsData[1].value
+
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          login: username.toString(),
+          password: password.toString()
+        })
+
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to login');
+      }
+
+      return await response.json().then(({payload}) => {
+        if (payload.token) {
+          const {token} = payload
+          localStorage.setItem('token', token);
+          username = ''
+          password = ''
+          setChildren(appContainer, [header, bankAccounts]);
+        } else {
+          console.log('Login failed.');
+        }
+      });
+    } catch (error) {
+      console.error('Error logging in:', error);
+      return null;
     }
-
-    return await response.json();
-  } catch (error) {
-    console.error('Error logging in:', error);
-    return null;
-  }
+  })
 }
 
 
-// Пример использования функции:
-// login('developer', 'skillbox')
-//   .then(token => {
-//     if (token) {
-//       console.log('Login successful. Token:', token);
-//       // Дальнейшие действия после успешной авторизации
-//     } else {
-//       console.log('Login failed.');
-//       // Обработка ошибки при авторизации
-//     }
-//   });
-// }
 export default authorize

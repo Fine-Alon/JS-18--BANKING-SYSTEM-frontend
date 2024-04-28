@@ -8,6 +8,7 @@
 
 // Определение пользовательского стиля для хидера
 .header {
+  display: flex;
   background-color: $primary; // Применение синего цвета из переменной $blue-600
   color: $white;
   box-shadow: 0 6px 10px 1px rgba(0, 0, 0, 0.62);
