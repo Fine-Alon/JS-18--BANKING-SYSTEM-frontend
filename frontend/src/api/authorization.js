@@ -1,6 +1,6 @@
 import {setChildren} from "redom";
 import header from "../DOM_elements/header";
-import bankAccounts from "../DOM_elements/bankAccounts";
+import accounts from "../DOM_elements/accounts";
 import appContainer from "../DOM_elements/appContainer";
 import loginForm from "../DOM_elements/loginForm";
 
@@ -34,7 +34,7 @@ async function authorize() {
           localStorage.setItem('token', token);
           username = ''
           password = ''
-          setChildren(appContainer, [header, bankAccounts]);
+          setChildren(appContainer, [header, accounts]);
         } else {
           console.log('Login failed.');
         }

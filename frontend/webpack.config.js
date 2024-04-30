@@ -9,6 +9,7 @@ module.exports = (env) => ({
     clean: true
   },
   devServer: {
+
     static: path.resolve(__dirname, 'dist'),
     hot: true,
   },
