@@ -8,6 +8,7 @@ const headerLinksSet = el('div.text-center.header-links-box');
 const links = headerLinks.map(link =>
   el('a.btn.btn-primary.header-link.m-2', {
     href: link,
+      "data-navigo": "",
     onclick(e) {
       e.preventDefault()
       console.log(e.target.getAttribute('href'))

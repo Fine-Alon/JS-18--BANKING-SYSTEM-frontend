@@ -9,9 +9,9 @@ module.exports = (env) => ({
     clean: true
   },
   devServer: {
-
     static: path.resolve(__dirname, 'dist'),
     hot: true,
+    historyApiFallback: true
   },
   optimization: {},
   plugins: [
