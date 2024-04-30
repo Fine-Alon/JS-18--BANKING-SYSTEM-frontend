@@ -9,7 +9,6 @@ const renderAccountsContainer = () => {
   setChildren(appContainer, [header, accounts])
 
   setChildren(window.document.body, appContainer)
-  return el('div', 'dsdffdg')
 }
 
 export default renderAccountsContainer

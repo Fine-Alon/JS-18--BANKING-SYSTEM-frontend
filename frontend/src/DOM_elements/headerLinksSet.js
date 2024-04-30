@@ -1,6 +1,6 @@
 import {el, setChildren} from "redom";
 import headerLinks from "../helpers/headerLinks";
-import {router} from "../index";
+import {router} from "../helpers/renderPageFromUrl";
 
 const headerLinksSet = el('div.text-center.header-links-box');
 
